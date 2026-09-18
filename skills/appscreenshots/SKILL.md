@@ -14,6 +14,7 @@ Use the connected AppScreenshots MCP service at `https://appscreenshots.net/api/
 - Search templates and use `get_template` to check availability, or create a blank project. Preserve the user's chosen template, language and design direction. Do not infer permission to buy a template or upgrade a plan.
 - Read `get_project` before editing to obtain the revision and frame/element IDs. `update_project` applies structured operations. Prefer `patch_element` with the existing ID and changed fields. `upsert_element` requires full geometry but preserves omitted fields for the same type. Existing image references are retained server-side; omit image URL fields from requests. Use authorized `assetId` values; local file paths and arbitrary image URLs cannot be used as asset IDs.
 - Keep copy legible and concise, preserve device aspect ratios, and distinguish supplied product facts from proposed marketing copy. The external agent creates copy and layout; these tools do not provide hosted AI generation.
+- Use `\n` in text content when an intentional line break matters, then confirm the break in the website editor and exported image. Natural wrapping can differ from the requested line breaks.
 
 ## Assets, retries and conflicts
 

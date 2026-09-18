@@ -2,7 +2,7 @@
 
 Endpoint: `https://appscreenshots.net/api/mcp` · Transport: **Streamable HTTP** · Authentication: **OAuth browser sign-in**.
 
-The hosted service must be enabled before authorization works. The repository helper only prints configuration and installs an optional Skill. Use your client's native remote connection rather than launching the helper as a stdio server.
+The hosted service is live. The repository helper only prints configuration and installs an optional Skill. Use your client's native remote connection rather than launching the helper as a stdio server.
 
 ## Claude Code
 
@@ -62,15 +62,15 @@ Use native Streamable HTTP and OAuth if supported. A client supporting only loca
 
 ## Verification status
 
-Documentation reviewed September 18, 2026. Entries below describe integration targets, **not completed end-to-end certification**.
+Documentation reviewed September 18, 2026. A native protocol test client completed OAuth with a `localhost` callback, project creation/editing, website preview and two-PNG export. A `127.0.0.1` callback is affected by the website URL normalization bug until the server fix is deployed. Entries below are integration targets, **not completed individual-client certification**.
 
 | Client | Connection instructions | Real OAuth + create + preview + export |
 | --- | --- | --- |
-| Claude Code | Native HTTP + OAuth | Pending hosted-service activation |
-| Codex | Native HTTP + OAuth; local command syntax checked | Pending hosted-service activation |
-| Gemini CLI | HTTP + OAuth | Pending hosted-service activation |
-| Kimi Code | Current TUI/config and legacy CLI documented separately | Pending hosted-service activation |
-| ZCode | HTTP + OAuth settings | Pending hosted-service activation |
+| Claude Code | Native HTTP + OAuth | Pending client verification |
+| Codex | Native HTTP + OAuth; local command syntax checked | Pending client verification |
+| Gemini CLI | HTTP + OAuth | Pending client verification |
+| Kimi Code | Current TUI/config and legacy CLI documented separately | Pending client verification |
+| ZCode | HTTP + OAuth settings | Pending client verification |
 | ChatGPT | Account/workspace-dependent custom connection | Pending; directory distribution separate |
 
 For each completed test record client version, date, operating system, OAuth mode, asset upload, inline preview display and export result. Never infer every client's compatibility from one protocol test.

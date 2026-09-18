@@ -4,7 +4,7 @@
 
 Let your AI agent create editable app screenshot projects, work with your authorized assets, review and correct designs using available client browser tools, then hand off the editor link for website export in [AppScreenshots](https://appscreenshots.net).
 
-> **Preview — hosted service pending activation.** On September 18, 2026, the production OAuth discovery endpoint returned HTTP 404. You can install the skill and prepare client settings, but account authorization and screenshot creation require the hosted service to be enabled. Run `doctor` below to check discovery; no real-client end-to-end compatibility is claimed yet.
+> **Preview service is live.** On September 18, 2026, a protocol client completed OAuth, created and edited a two-frame project, opened it in the website editor, and exported two PNGs. Individual Claude Code, Codex, Gemini CLI, Kimi Code, ZCode and ChatGPT integrations have not yet been certified. Until the website's loopback callback fix is deployed, clients using a `127.0.0.1` redirect URI may fail authorization; see [troubleshooting](docs/troubleshooting.md).
 
 This public repository contains **connection examples, a small installation helper, and an optional agent Skill**. The MCP server runs within AppScreenshots. Website, authentication, database, billing and rendering backend code remain in their existing private deployment. The helper is not a local stdio server.
 
@@ -94,6 +94,6 @@ npm run check
 npm pack --dry-run
 ```
 
-Tests exercise configuration generation, installation isolation, overwrite protection, CLI failures and discovery diagnostics. CI runs on Linux, macOS and Windows with Node.js 20 and 22. Live-client OAuth, uploads, preview display and exports still require service staging tests; see the [compatibility matrix](docs/clients.md#verification-status).
+Tests exercise configuration generation, installation isolation, overwrite protection, CLI failures and discovery diagnostics. CI runs on Linux, macOS and Windows with Node.js 20 and 22. A protocol client has completed the hosted create, editor preview and export flow; individual client integrations and asset upload remain unverified. See the [compatibility matrix](docs/clients.md#verification-status).
 
 MIT license covers this repository's helper, examples and Skill; it does not grant access to the hosted service or rights to user assets, paid templates or the website backend.
