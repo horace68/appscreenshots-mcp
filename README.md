@@ -78,13 +78,13 @@ node bin/appscreenshots.mjs doctor
 
 > Use my authorized screenshots to create an English App Store screenshot project. Pick an available template, keep the headlines short, open the editor with available browser tools, inspect screenshots, correct clipping/cropping/layout issues, then give me the project link so I can export on the website.
 
-If your client cannot transfer files, upload screenshots on the website first and authorize the project or individual assets. Chat attachments are not automatically available to MCP. [Tool reference](docs/tools.md) explains editing, retries, previews and downloads.
+Upload screenshots on the website first and authorize the project or individual assets. Chat attachments are not automatically available to MCP. [Tool reference](docs/tools.md) explains editing, retries, previews and downloads.
 
 ## Availability and data
 
 The default flow does not require cloud rendering: MCP saves projects, the agent inspects the website using its own browser tools, and the user exports in the editor. Browser access is supplied by the client, not installed by this Skill. Website login is separate from MCP OAuth. If browser/image tools are unavailable, visual verification remains pending. Project, template and export entitlements still apply. See the [browser review guide](skills/appscreenshots/references/browser-preview.md).
 
-Manage or revoke access in **Settings → Connected AI tools**. Already-issued signed download links can remain valid until expiry. This repository does not implement purchases, deletion, hosted AI generation or app-store publishing. [Security and scope](SECURITY.md).
+Manage or revoke access in **Settings → Connected AI tools**. This repository does not implement purchases, deletion, hosted AI generation or app-store publishing. [Security and scope](SECURITY.md).
 
 ## Development
 

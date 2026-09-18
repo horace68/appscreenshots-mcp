@@ -13,10 +13,6 @@ The hosted MCP server is the source of truth for input schemas and account permi
 | `create_project` | Create from a template or blank canvas |
 | `update_project` | Apply structured edits with revision and idempotency protection |
 | `list_assets` | List explicitly shared assets and assets in authorized projects |
-| `create_asset_upload` | Obtain a temporary PUT URL for a PNG/JPEG/WebP image |
-| `complete_asset_upload` | Validate the upload and attach it to the project |
-| `request_render` | Optional: only listed when cloud rendering is enabled |
-| `get_render_job` | Optional: inspect cloud render results when enabled |
 
 A normal task reads capabilities/assets, selects an available template, creates or reads a project, edits it, inspects previews and exports. The installed [Skill](../skills/appscreenshots/SKILL.md) explains when to apply each step.
 
@@ -24,8 +20,8 @@ Editing supports naming, frame addition/removal/reordering, element upsert/remov
 
 Every logical write uses a fresh idempotency key; reuse it for an identical retry. After a revision conflict, read the latest version and reconcile. Reusing a key with changed arguments is an error. Never use SQL, HTML or scripts as edit instructions.
 
-Uploads require a client able to PUT raw file bytes and the server's upload storage configuration. Otherwise upload through the website.
+Upload materials through the existing website editor, then authorize the project/assets. The nine-tool MCP does not expose binary uploads, cloud rendering, render jobs or temporary export download links.
 
 The default review flow uses `get_project_preview` → the client's browser tools → editor screenshots → MCP corrections → fresh browser screenshots. Website login is separate from MCP authorization. Browser access is supplied by the client, not by this server or Skill. Preserve unsaved browser edits and re-read the revision before corrections. See the [browser review guide](../skills/appscreenshots/references/browser-preview.md).
 
-Deliver the project link for the user to preview and export in the editor. If the client lacks browser/image tools, say that visual verification is pending. Cloud render tools are optional and absent when disabled; do not call them in the browser-review flow. No payment, deletion, AI-image-generation or store-publishing tools are exposed by this version.
+Deliver the project link for the user to preview and export in the editor. If the client lacks browser/image tools, say that visual verification is pending. Preview and export use the website; no cloud-render tools are exposed. No payment, deletion, AI-image-generation or store-publishing tools are exposed by this version.

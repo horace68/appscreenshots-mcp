@@ -7,8 +7,8 @@
 - **OAuth rejected:** Restart the client's authorization flow and check the canonical endpoint. An organization may restrict custom connections. Avoid sharing tokens or callback query strings in issues.
 - **No projects/assets:** The connection can only see selected projects/assets. Review website Settings → Connected AI tools. Creation also needs the allow-new-projects permission and account entitlement.
 - **Revision conflict:** Read the project again; reconcile with the website user's edits and use a new idempotency key for the changed request.
-- **Rate/quota limit:** Respect the returned error and retry window. Previews consume render frames; do not render repeatedly without changing the design. Daily quotas reset at UTC midnight.
+- **Rate/quota limit:** Respect the returned error and retry window. Project/template/export entitlements still apply; browser review does not consume a cloud-render quota.
 - **Client cannot upload or inspect images:** Use the website editor and preview. Text-only confirmation does not constitute a visual check.
-- **Expired download:** Poll `get_render_job` for a fresh link while the artifact is retained. If it has expired, create a new render with a new idempotency key.
+- **Export needed:** Open the project in the website editor and use Download. This MCP does not provide render-job download links.
 
 For public issues include client/version, operating system, tool name, sanitized error code and reproduction steps. Never attach credentials, signed URLs, private screenshots or unpublished project contents.
