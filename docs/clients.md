@@ -48,7 +48,11 @@ Use these only if your installed `kimi mcp --help` exposes them. [Legacy CLI ref
 
 ## ZCode
 
-In MCP settings, add an HTTP service named `appscreenshots`, enter the endpoint, enable OAuth and complete the browser sign-in. Use the configuration interface shipped with your version. [Official MCP documentation](https://zcode.z.ai/en/docs/mcp-services).
+Merge [zcode.config.json](../examples/zcode.config.json) into `~/.zcode/cli/config.json` under `mcp.servers` (or add the HTTP service named `appscreenshots` in Settings → MCP), restart the session, and complete the OAuth browser sign-in when the client presents it. Use the configuration interface shipped with your version. [Official MCP documentation](https://zcode.z.ai/en/docs/mcp-services).
+
+Known issue (desktop build verified 2026-09-18): the desktop client does not open the authorization URL by itself and cancels a pending authorization after roughly 180 seconds, so the sign-in page must be completed promptly once it appears; until the website's loopback registration default is deployed, the client's `127.0.0.1` callback may also be rejected at registration (see [troubleshooting](troubleshooting.md)). A verified interim path is an explicit `application_type: native` registration or a manually obtained token supplied as a static `Authorization: Bearer` header on the server entry.
+
+Optional Skill: `node bin/appscreenshots.mjs install-skill zcode`. The default is `~/.agents/skills`, read by ZCode at startup.
 
 ## ChatGPT
 
@@ -70,7 +74,7 @@ Documentation reviewed September 18, 2026. A native protocol test client complet
 | Codex | Native HTTP + OAuth; local command syntax checked | Pending client verification |
 | Gemini CLI | HTTP + OAuth | Pending client verification |
 | Kimi Code | Current TUI/config and legacy CLI documented separately | Pending client verification |
-| ZCode | HTTP + OAuth settings | Pending client verification |
+| ZCode | HTTP + OAuth settings; `config`/`install-skill` helper support | Partially verified 2026-09-18 (macOS desktop): manual native-client registration + PKCE OAuth, Bearer-authenticated initialize/tools/list and project create/edit succeeded; native in-client OAuth blocked by the client's 180-second cancel and the pending loopback fix |
 | ChatGPT | Account/workspace-dependent custom connection | Pending; directory distribution separate |
 
 For each completed test record client version, date, operating system, OAuth mode, asset upload, inline preview display and export result. Never infer every client's compatibility from one protocol test.

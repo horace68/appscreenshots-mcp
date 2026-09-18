@@ -9,8 +9,8 @@ import {
 
 const help = `AppScreenshots MCP connection helper (Node.js 20+)
 
-  appscreenshots-mcp config <codex|claude|gemini|kimi>
-  appscreenshots-mcp install-skill <codex|claude|custom> [--dir <skills-directory>] [--dry-run]
+  appscreenshots-mcp config <codex|claude|zcode|gemini|kimi>
+  appscreenshots-mcp install-skill <codex|claude|zcode|custom> [--dir <skills-directory>] [--dry-run]
   appscreenshots-mcp doctor
 
 config prints a snippet; merge it into existing client settings, never replace them.

@@ -34,6 +34,10 @@ test('client snippets preserve each native HTTP transport format', () => {
     'http',
   );
   assert.equal(
+    JSON.parse(configFor('zcode')).mcp.servers.appscreenshots.type,
+    'http',
+  );
+  assert.equal(
     JSON.parse(configFor('gemini')).mcpServers.appscreenshots.httpUrl,
     endpoint,
   );
@@ -49,6 +53,7 @@ test('checked-in examples match generated configuration', async () => {
   for (const [client, name] of Object.entries({
     codex: 'codex.toml',
     claude: 'claude.mcp.json',
+    zcode: 'zcode.config.json',
     gemini: 'gemini.settings.json',
     kimi: 'kimi.mcp.json',
   })) {
@@ -109,6 +114,10 @@ test('client paths use their skill directories and custom requires a destination
   const fakeHome = join(tmpdir(), 'fake-agent-home');
   assert.equal(
     skillTarget('codex', undefined, fakeHome),
+    join(fakeHome, '.agents/skills/appscreenshots'),
+  );
+  assert.equal(
+    skillTarget('zcode', undefined, fakeHome),
     join(fakeHome, '.agents/skills/appscreenshots'),
   );
   assert.equal(
