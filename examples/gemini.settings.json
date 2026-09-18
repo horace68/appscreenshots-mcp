@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "appscreenshots": {
+      "httpUrl": "https://appscreenshots.net/api/mcp",
+      "oauth": {
+        "enabled": true
+      }
+    }
+  }
+}

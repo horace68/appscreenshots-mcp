@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "appscreenshots": {
+      "type": "http",
+      "url": "https://appscreenshots.net/api/mcp"
+    }
+  }
+}
