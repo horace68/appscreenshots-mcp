@@ -16,7 +16,7 @@ The hosted MCP server is the source of truth for input schemas and account permi
 
 A normal task reads capabilities/assets, selects an available template, creates or reads a project, edits it, inspects previews and exports. The installed [Skill](../skills/appscreenshots/SKILL.md) explains when to apply each step.
 
-Editing supports naming, frame addition/removal/reordering, element upsert/removal, backgrounds, languages and canvas settings. Read actual tool schemas for supported fields. Element upsert replaces the whole element. Use IDs returned by the server and preserve unrelated fields.
+Editing supports naming, frame addition/removal/reordering, element upsert/removal, backgrounds, languages and canvas settings. Read actual tool schemas for supported fields. Prefer `patch_element` with an existing element ID and only changed fields. `upsert_element` requires full geometry and preserves omitted fields for the same type. Existing image URLs are retained server-side: do not send them back. Replace images through authorized `assetId` values. `set_background` targets one frame and preserves other frames when splitting shared backgrounds.
 
 Every logical write uses a fresh idempotency key; reuse it for an identical retry. After a revision conflict, read the latest version and reconcile. Reusing a key with changed arguments is an error. Never use SQL, HTML or scripts as edit instructions.
 
