@@ -1,11 +1,11 @@
 interface:
   display_name: "AppScreenshots"
-  short_description: "Create, preview, and export app screenshots"
-  default_prompt: "Use $appscreenshots to create a screenshot project from my authorized assets, inspect previews, and export the result."
+  short_description: "Create app screenshots and review them in a browser"
+  default_prompt: "Use $appscreenshots to create a screenshot project from my authorized assets, open the editor with available browser tools, inspect screenshots, correct visual issues, and return the project link for website export."
 dependencies:
   tools:
     - type: "mcp"
       value: "appscreenshots"
-      description: "Authorized AppScreenshots projects and renders"
+      description: "Authorized AppScreenshots project creation and editing"
       transport: "streamable_http"
       url: "https://appscreenshots.net/api/mcp"

@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md) · [Client setup](docs/clients.md) · [Tools](docs/tools.md) · [Troubleshooting](docs/troubleshooting.md)
 
-Let your AI agent create editable app screenshot projects, work with your authorized assets, inspect previews, and export PNG/JPEG images or ZIP bundles in [AppScreenshots](https://appscreenshots.net).
+Let your AI agent create editable app screenshot projects, work with your authorized assets, review and correct designs using available client browser tools, then hand off the editor link for website export in [AppScreenshots](https://appscreenshots.net).
 
 > **Preview — hosted service pending activation.** On September 18, 2026, the production OAuth discovery endpoint returned HTTP 404. You can install the skill and prepare client settings, but account authorization and screenshot creation require the hosted service to be enabled. Run `doctor` below to check discovery; no real-client end-to-end compatibility is claimed yet.
 
@@ -76,13 +76,13 @@ node bin/appscreenshots.mjs doctor
 
 ## Try a task
 
-> Use my authorized screenshots to create an English App Store screenshot project. Pick an available template, keep the headlines short, inspect previews, and export the final images. Include a link so I can continue editing on the website.
+> Use my authorized screenshots to create an English App Store screenshot project. Pick an available template, keep the headlines short, open the editor with available browser tools, inspect screenshots, correct clipping/cropping/layout issues, then give me the project link so I can export on the website.
 
 If your client cannot transfer files, upload screenshots on the website first and authorize the project or individual assets. Chat attachments are not automatically available to MCP. [Tool reference](docs/tools.md) explains editing, retries, previews and downloads.
 
 ## Availability and data
 
-Account entitlements still apply. Current initial cloud quotas are 30 rendered frames/day for Free and 300/day for paid users (UTC reset); previews also count. Cached results are reused. Downloads expire after 15 minutes; artifacts are retained for 24 hours. These limits may change; consult `get_capabilities` and the website for account-specific permissions.
+The default flow does not require cloud rendering: MCP saves projects, the agent inspects the website using its own browser tools, and the user exports in the editor. Browser access is supplied by the client, not installed by this Skill. Website login is separate from MCP OAuth. If browser/image tools are unavailable, visual verification remains pending. Project, template and export entitlements still apply. See the [browser review guide](skills/appscreenshots/references/browser-preview.md).
 
 Manage or revoke access in **Settings → Connected AI tools**. Already-issued signed download links can remain valid until expiry. This repository does not implement purchases, deletion, hosted AI generation or app-store publishing. [Security and scope](SECURITY.md).
 
